@@ -35,9 +35,10 @@
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 	</target>
 
-	<target name="compile" depends="clean, init">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false" classpathref="classpath" />
-
+	<target name="compile" depends="clean, init, retrieve">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false">
+			<classpath refid="classpath" />
+		</javac>
 	</target>
 
 	<target name="init">
