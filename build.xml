@@ -3,7 +3,7 @@
 	<property name="src.dir" location="src" />
 	<property name="build.dir" location="build" />
 	<property name="classes.dir" location="${build.dir}/classes" />
-	<property name="dir.lib" value="WebContent/WEB­INF/lib" />
+	<property name="dir.lib" value="WebContent/WEB-­INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]-[revision].[ext]" />
 	<property name="webContent.dir" location="WebContent" />
 	<property name="war.file" location="Kkarpuk2.war" />
@@ -19,7 +19,7 @@
 	</path>
 
 	<target name="war" depends="compile">
-		<war destfile="${war.file}" webxml="${webContent.dir}/WEB­INF/web.xml">
+		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-­INF/web.xml">
 			<classes dir="${classes.dir}" />
 			<fileset dir="${webContent.dir}" excludes="**/servlet-api-jar-2.5.jar" />
 		</war>
