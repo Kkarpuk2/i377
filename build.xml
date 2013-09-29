@@ -36,7 +36,7 @@
 	</target>
 
 	<target name="compile" depends="clean, init">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" classpathref="classpath" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false" classpathref="classpath" />
 
 	</target>
 
