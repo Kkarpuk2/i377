@@ -41,7 +41,7 @@
   </servlet-mapping>
   <listener>
 		<listener-class>
-			listeners.SessionCounterListener
+			listener.SessionCounterListener
 		</listener-class>
 	</listener>
 </web-app>

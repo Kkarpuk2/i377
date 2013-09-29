@@ -23,13 +23,21 @@ public class HomePage extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String count =  request.getSession().getId();
-		String param = null;
-		request.getSession().setAttribute("asd", param);
-		response.getWriter().println("Hello");
-		response.getWriter().println("Your session id is: "+count);
-		response.getWriter().println("Your session attribute is: "+param);
+    protected void doGet(HttpServletRequest request,
+    		   HttpServletResponse response) throws ServletException, IOException {
+    		  
+    		  String param = request.getParameter("param");
+    		  String session_attribute = (String)request.getSession().getAttribute("param");
+    		  
+    		  if ( param != null ) {
+    		   request.getSession().setAttribute("param", param);
+    		   session_attribute = param;
+    		  }
+
+    		  response.getWriter().println("Hello");
+    		  response.getWriter().println("Your session id is " + request.getSession().getId());
+    		  response.getWriter().println("Session attribute is " + session_attribute);  
+    		 
 	}
 
 	/**
