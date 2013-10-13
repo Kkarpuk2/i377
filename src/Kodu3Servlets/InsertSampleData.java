@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Kodu3DB.SetupDao;
 
-public class InsertSamples extends HttpServlet {
+public class InsertSampleData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

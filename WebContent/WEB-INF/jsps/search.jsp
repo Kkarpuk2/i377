@@ -1,4 +1,5 @@
 <%@ include file="menu.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <body>
 	<form action="Search" method="post">
 		<input id="searchStringBox" value="" name="searchString" /> <input
@@ -7,8 +8,8 @@
 	<table id="listTable" class="listTable">
 		<thead>
 			<tr>
-				<th scope="col">Name</th>
-				<th scope="col">Code</th>
+				<th scope="col">Nimi</th>
+				<th scope="col">Kood</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>

@@ -9,11 +9,13 @@ import Kodu3DB.Item;
 public class Dao extends AbstractDao {
 	
 	
-	public List<Item> search(String keyword) throws SQLException{
+	public List<Item> search(String search) throws SQLException{
 		      List<Item> items = new ArrayList<Item>();
+		     
 		      try {
 		         st = getConnection().createStatement();
-		         rs = st.executeQuery("SELECT * FROM unit WHERE LCASE(name) LIKE '%" + keyword + "%'");
+		         rs = st.executeQuery("SELECT * FROM unit WHERE LCASE(name) LIKE '%" + search.toLowerCase() + "%'");
+
 		         while(rs.next()) {
 		            Item item = new Item();
 		            item.setId(rs.getInt("id"));
@@ -21,6 +23,7 @@ public class Dao extends AbstractDao {
 		            item.setCode(rs.getString("code"));
 		            items.add(item);
 		         }
+		         
 		      }
 		      finally {
 		         closeResources();
@@ -54,25 +57,25 @@ public class Dao extends AbstractDao {
 
    
    public List<Item> findAllItems() throws SQLException {
-      List<Item> kirjed = new ArrayList<Item>();
-      try {
-         st = getConnection().createStatement();
-         rs = st.executeQuery("SELECT * FROM unit");
-         while(rs.next()) {
-            Item item = new Item();
-            item.setId(Integer.parseInt(rs.getString("id")));
-            item.setName(rs.getString("name"));
-            item.setCode(rs.getString("code"));
-            kirjed.add(item);
-         }
-      } 
-      finally {
-         closeResources();
-      }
-      return kirjed;
-   }
+	   List<Item> items = new ArrayList<Item>();
+		try {
+		st =getConnection().createStatement();
+		rs = st.executeQuery("SELECT * FROM unit");
+		while(rs.next()){
+			Item item = new Item();
+			item.setId(rs.getInt(1));
+			item.setName(rs.getString(2));
+			item.setCode(rs.getString(3));
+			items.add(item);
+
+		}
+		} finally {
+		      closeResources();
+		    }
+		return items;
+	}
    
-   public boolean deleteAll() throws SQLException {
+   public void deleteAll() throws SQLException {
 	      try {
 	         st = getConnection().createStatement();
 	         rs = st.executeQuery("DELETE FROM UNIT");
@@ -80,7 +83,7 @@ public class Dao extends AbstractDao {
 	      finally {
 	         closeResources();
 	      }
-	      return true;
+	   
 	   }
 
 }

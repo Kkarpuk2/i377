@@ -24,4 +24,8 @@ public class Item {
    public void setCode(String code) {
       this.code = code;
    }
+   @Override
+   public String toString() {
+   	return "Unit [id=" + id + ", name=" + name + ", code=" + code + "]";
+   }
 }
