@@ -1,4 +1,4 @@
-<!DOCTYPE project>
+<?xml version="1.0"?>
 <project name="Kkarpuk2" xmlns:ivy="antlib:org.apache.ivy.ant" default="war">
 
 	<property name="src.dir" location="src" />

@@ -4,18 +4,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Kodu3DB.Data;
+import Kodu3DB.Item;
 
 public class Dao extends AbstractDao {
 	
 	
-	public List<Data> search(String keyword) throws SQLException{
-		      List<Data> items = new ArrayList<Data>();
+	public List<Item> search(String keyword) throws SQLException{
+		      List<Item> items = new ArrayList<Item>();
 		      try {
 		         st = getConnection().createStatement();
 		         rs = st.executeQuery("SELECT * FROM unit WHERE LCASE(name) LIKE '%" + keyword + "%'");
 		         while(rs.next()) {
-		            Data item = new Data();
+		            Item item = new Item();
 		            item.setId(rs.getInt("id"));
 		            item.setName(rs.getString("name"));
 		            item.setCode(rs.getString("code"));
@@ -53,13 +53,13 @@ public class Dao extends AbstractDao {
 	   }
 
    
-   public List<Data> findAllItems() throws SQLException {
-      List<Data> kirjed = new ArrayList<Data>();
+   public List<Item> findAllItems() throws SQLException {
+      List<Item> kirjed = new ArrayList<Item>();
       try {
          st = getConnection().createStatement();
          rs = st.executeQuery("SELECT * FROM unit");
          while(rs.next()) {
-            Data item = new Data();
+            Item item = new Item();
             item.setId(Integer.parseInt(rs.getString("id")));
             item.setName(rs.getString("name"));
             item.setCode(rs.getString("code"));

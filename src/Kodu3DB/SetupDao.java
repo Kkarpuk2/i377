@@ -9,11 +9,9 @@ import Kodu3DB.AbstractDao;
 
 public class SetupDao extends AbstractDao {
 
-	public SetupDao()
-	{
-		createSchema();
-	    addTestData();
-	}
+//	public SetupDao()
+//	{
+//	}
     public void createSchema() {
         executeSqlFromFile(getClassPathFile("schema.sql"));
     }
