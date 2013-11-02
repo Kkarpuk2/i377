@@ -1,30 +1,23 @@
 package listener;
 
-import java.io.File;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import Kodu3DB.SetupDao;
+import util.JpaUtil;
+import dbNeljas.SetupDao;
 
 public class ApplicationInitializerListener implements ServletContextListener{
 
-	@Override
+	   @Override
 	   public void contextInitialized(ServletContextEvent arg0) {
 	      SetupDao setupDao = new SetupDao();
 
-	      if(!databaseExists()) {
-	         setupDao.createSchema();
-	         setupDao.addTestData();
-	      }
+	      setupDao.createSchema();
+	      setupDao.addTestData();
+	      setupDao.initializeEMFactory();
 	   }
-
 	   @Override
 	   public void contextDestroyed(ServletContextEvent arg0) {
-	      
-	   }
-
-	   private boolean databaseExists() {
-	      return new File(System.getProperty("user.home") + "/data/Kkarpuk2/db.script").exists();
+	      JpaUtil.closeFactory();
 	   }
 	}

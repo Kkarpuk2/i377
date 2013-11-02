@@ -17,7 +17,9 @@
 			<c:forEach var="item" items="${searchResults}">
 				<tr>
 					<td>
-						<div id="row_${item.code}">${item.name}</div>
+						<div id="row_${item.code}">
+							<a id="view_${item.code}" href="View?id=${item.id}">${item.name}</a>
+						</div>
 					</td>
 					<td>
 						${item.code}
